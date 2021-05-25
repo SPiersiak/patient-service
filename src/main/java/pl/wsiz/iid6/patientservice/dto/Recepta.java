@@ -4,13 +4,20 @@ import java.util.Date;
 import java.util.List;
 
 public class Recepta {
-    private static int ileWazna=90;
-    private Date dataWydania;
-    private List<Lek> listaLekow;
-    private double cena;
+    private int ID;
+    private String peselPacjenta;
+    private Date dataWaznosci;
 
-    public boolean checkWaznosc(){
-        // roznica pomiedzy wystawieniem a dzies <ileWazna
-        return true;
+    public List<Lek> getListaLekow() {
+        return listaLekow;
+    }
+
+    private List<Lek> listaLekow;
+
+    public List<Lek> obtainListaLekow(String pesel, int ID) {
+        // if dataWaznosci<dataDzisiaj
+        return listaLekow;
+        //else
+        //return null;
     }
 }

@@ -3,18 +3,11 @@ package pl.wsiz.iid6.patientservice.dto;
 import java.util.List;
 
 public class Pacjent extends Osoba {
-    private int ID;
-    private Osoba lekarzRodzinny;
+    private int nrUbezpieczenia;
+    private Osoba lekarzRodzinny;// albo string
+    private List<Skierowanie> listaSkierowan;
+    private List<Badanie> listaBadan;
+    private Stan stanZdrowia;
+    private List<String> leki;
     private List<Recepta> recepty;
-    private List<Lek> leki;
-    private List<Badanie> badania;
-    private List<Skierowanie> skierowania;
-
-    public Pacjent(String pesel) {
-        super(pesel);
-    }
-
-    public Pacjent(String imie, String nazwisko, String pesel) {
-        super(imie, nazwisko, pesel);
-    }
 }

@@ -1,13 +1,10 @@
 package pl.wsiz.iid6.patientservice.dto;
 
-public enum Status {
-        NIEZREALIZOWANA(false),
-        ZREALIZOWANA(true),
-        ZAREZERWOWANA(true);
+public enum Stan {
+        normalny(true), podgoraczkowy(false), goraczkowy(false);
+        boolean zdrowy;
 
-        boolean doRezerwacji;
-
-        private Status(boolean czyZarezertowany) {
-            doRezerwacji = doRezerwacji;
+        Stan(boolean czyOK) {
+                zdrowy = czyOK;
         }
 }

@@ -5,35 +5,30 @@ import java.util.Date;
 public class Osoba {
     private String imie;
     private String nazwisko;
-    private String miejscowosc;
+    private String miejscowość;
     private String kod;
     private String ulica;
-    private String nrTelefonu;
     private String pesel;
-    private String imieOjca;
-    private String imieMatki;
     private Date dataUrodzenia;
+    private String mail;
+    private String nrTelefonu;
+    private String plec;
 
     public int getWiek(){
-        // wiek = obecny rok - rok urodzenia
-        int wiek = 20;
+        // wyznczamy wiek Rok obecny - rok urodzenia
+        int wiek =20;
         return wiek;
     }
 
-    public boolean checkPesel(){
-        // 990512 .... 12.05.2021
-        // dłudość pesel
+    public boolean checkEmail(){
+        // czy poprwany, czy zawiera @
         return true;
     }
 
-    public Osoba(String pesel) {
-        this.pesel = pesel;
-    }
-
-    public Osoba(String imie, String nazwisko, String pesel) {
-        this.imie = imie;
-        this.nazwisko = nazwisko;
-        this.pesel = pesel;
+    public boolean checkPesel(){
+        // 12.05.01 -> 01 05 31.....
+        //             01 05+20 31
+        return true;
     }
 
     public String getImie() {
@@ -52,12 +47,12 @@ public class Osoba {
         this.nazwisko = nazwisko;
     }
 
-    public String getMiejscowosc() {
-        return miejscowosc;
+    public String getMiejscowość() {
+        return miejscowość;
     }
 
-    public void setMiejscowosc(String miejscowosc) {
-        this.miejscowosc = miejscowosc;
+    public void setMiejscowość(String miejscowość) {
+        this.miejscowość = miejscowość;
     }
 
     public String getKod() {
@@ -76,36 +71,12 @@ public class Osoba {
         this.ulica = ulica;
     }
 
-    public String getNrTelefonu() {
-        return nrTelefonu;
-    }
-
-    public void setNrTelefonu(String nrTelefonu) {
-        this.nrTelefonu = nrTelefonu;
-    }
-
     public String getPesel() {
         return pesel;
     }
 
     public void setPesel(String pesel) {
         this.pesel = pesel;
-    }
-
-    public String getImieOjca() {
-        return imieOjca;
-    }
-
-    public void setImieOjca(String imieOjca) {
-        this.imieOjca = imieOjca;
-    }
-
-    public String getImieMatki() {
-        return imieMatki;
-    }
-
-    public void setImieMatki(String imieMatki) {
-        this.imieMatki = imieMatki;
     }
 
     public Date getDataUrodzenia() {
