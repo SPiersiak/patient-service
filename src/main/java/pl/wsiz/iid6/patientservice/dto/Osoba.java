@@ -3,6 +3,14 @@ package pl.wsiz.iid6.patientservice.dto;
 import java.util.Date;
 
 public class Osoba {
+    public Osoba(String imie, String nazwisko, String miejscowość, String pesel, String nrTelefonu) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.miejscowość = miejscowość;
+        this.pesel = pesel;
+        this.nrTelefonu = nrTelefonu;
+    }
+
     private String imie;
     private String nazwisko;
     private String miejscowość;

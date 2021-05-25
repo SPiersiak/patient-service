@@ -10,4 +10,9 @@ public class Pacjent extends Osoba {
     private Stan stanZdrowia;
     private List<String> leki;
     private List<Recepta> recepty;
+
+    public Pacjent(String imie, String nazwisko, String miejscowość, String pesel, String nrTelefonu, int nrUbezpieczenia){
+        super(imie, nazwisko, miejscowość, pesel, nrTelefonu);
+        this.nrUbezpieczenia = nrUbezpieczenia;
+    }
 }
