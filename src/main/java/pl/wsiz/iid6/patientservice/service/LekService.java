@@ -3,6 +3,8 @@ package pl.wsiz.iid6.patientservice.service;
 import org.springframework.stereotype.Service;
 import pl.wsiz.iid6.patientservice.dto.Lek;
 
+import java.util.Arrays;
+
 @Service
 public class LekService {
     private Lek[] leki = {new Lek("Ibuprom", "Sanofi"),
@@ -17,4 +19,14 @@ public class LekService {
         }
         return new Lek(nazwa);
     }
+
+    public String getAllLek(){
+        String allMedicine ="Lek - Producent: ";
+        for(Lek lek: leki){
+            allMedicine= allMedicine+lek.getNazwa()+" - "+lek.getProducent()+"; ";
+        }
+        return allMedicine;
+    }
+
+
 }
