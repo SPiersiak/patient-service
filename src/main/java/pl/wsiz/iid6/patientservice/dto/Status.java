@@ -1,4 +1,4 @@
-package zdrowie;
+package pl.wsiz.iid6.patientservice.dto;
 
 public enum Status {
         NIEZREALIZOWANA(false),
