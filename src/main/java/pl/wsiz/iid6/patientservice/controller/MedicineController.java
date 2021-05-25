@@ -23,4 +23,11 @@ public class MedicineController {
         return lekService.findLek(name);
     }
 
+    @GetMapping(path="/allMedicine")
+    @ResponseBody
+    public String getAllMedicine(){
+
+        return lekService.getAllLek();
+    }
+
 }
