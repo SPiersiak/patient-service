@@ -24,6 +24,13 @@ public class Osoba {
     private String pesel;
     private Date dataUrodzenia;
     private String mail;
+
+    public Osoba(String imie, String nazwisko, String pesel) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.pesel = pesel;
+    }
+
     private String nrTelefonu;
     private String plec;
 
