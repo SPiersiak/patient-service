@@ -15,4 +15,60 @@ public class Pacjent extends Osoba {
         super(imie, nazwisko, miejscowość, pesel, nrTelefonu);
         this.nrUbezpieczenia = nrUbezpieczenia;
     }
+
+    public int getNrUbezpieczenia() {
+        return nrUbezpieczenia;
+    }
+
+    public void setNrUbezpieczenia(int nrUbezpieczenia) {
+        this.nrUbezpieczenia = nrUbezpieczenia;
+    }
+
+    public Osoba getLekarzRodzinny() {
+        return lekarzRodzinny;
+    }
+
+    public void setLekarzRodzinny(Osoba lekarzRodzinny) {
+        this.lekarzRodzinny = lekarzRodzinny;
+    }
+
+    public List<Skierowanie> getListaSkierowan() {
+        return listaSkierowan;
+    }
+
+    public void setListaSkierowan(List<Skierowanie> listaSkierowan) {
+        this.listaSkierowan = listaSkierowan;
+    }
+
+    public List<Badanie> getListaBadan() {
+        return listaBadan;
+    }
+
+    public void setListaBadan(List<Badanie> listaBadan) {
+        this.listaBadan = listaBadan;
+    }
+
+    public Stan getStanZdrowia() {
+        return stanZdrowia;
+    }
+
+    public void setStanZdrowia(Stan stanZdrowia) {
+        this.stanZdrowia = stanZdrowia;
+    }
+
+    public List<String> getLeki() {
+        return leki;
+    }
+
+    public void setLeki(List<String> leki) {
+        this.leki = leki;
+    }
+
+    public List<Recepta> getRecepty() {
+        return recepty;
+    }
+
+    public void setRecepty(List<Recepta> recepty) {
+        this.recepty = recepty;
+    }
 }
