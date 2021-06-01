@@ -3,9 +3,10 @@ CREATE TABLE patient
 (
     ID         INT AUTO_INCREMENT PRIMARY KEY,
     FIRST_NAME VARCHAR(250) NOT NULL,
-    LAST_NAME  VARCHAR(250) NOT NULL
+    LAST_NAME  VARCHAR(250) NOT NULL,
+    PESEL VARCHAR(250) NOT NULL
 );
-INSERT INTO patient (FIRST_NAME, LAST_NAME)
-VALUES ('Ala', 'Makota'),
-       ('Ola', 'Dom'),
-       ('Jan', 'Kowalski');
+INSERT INTO patient (FIRST_NAME, LAST_NAME, PESEL)
+VALUES ('Ala', 'Makota', '93090536384'),
+       ('Ola', 'Dom', '93090536384'),
+       ('Jan', 'Kowalski', '86121711452');

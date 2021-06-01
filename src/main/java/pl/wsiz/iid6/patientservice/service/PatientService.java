@@ -16,8 +16,8 @@ public class PatientService {
         Optional<PatientEntity> res = patientRepository.findById(id);
         if (res.isPresent()) {
             PatientEntity pat = res.get();
-            return new Pacjent(pat.getFirstName(),pat.getLastName() );
+            return new Pacjent(pat.getFirstName(),pat.getLastName(), pat.getPesel() );
         }
-        return new Pacjent("None", "None");
+        return new Pacjent("None", "None", "None");
     }
 }
