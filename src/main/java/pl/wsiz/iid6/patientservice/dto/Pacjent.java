@@ -15,6 +15,7 @@ public class Pacjent extends Osoba {
         super(imie, nazwisko, miejscowość, pesel, nrTelefonu);
         this.nrUbezpieczenia = nrUbezpieczenia;
     }
+    public Pacjent(String imie, String nazwisko) { super(imie, nazwisko); }
 
     public int getNrUbezpieczenia() {
         return nrUbezpieczenia;
