@@ -11,6 +11,11 @@ public class Osoba {
         this.nrTelefonu = nrTelefonu;
     }
 
+    public Osoba(String imie, String nazwisko) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+    }
+
     private String imie;
     private String nazwisko;
     private String miejscowość;
