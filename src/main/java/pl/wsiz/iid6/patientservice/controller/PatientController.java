@@ -31,4 +31,10 @@ public class PatientController  extends PatientService {
     public String patientId(@RequestParam Long idP){
         return (patientService.findbyId(idP)).toString();
     }
+
+    @GetMapping(path = "/names")
+    @ResponseBody
+    public String patientName(@RequestParam String lastName){
+        return patientService.findbyName(lastName);
+    }
 }
