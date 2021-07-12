@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href = "/css/styles.css" rel = "stylesheet"/>
+    <title>Moja aplikacja</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background: url('https://wallpaperaccess.com/full/958470.jpg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; background-size: cover; -o-background-size: cover; ">
+<div class="container">
+    <div class="card border-0 shadow my-5">
+        <div class="card-body p-5">
+            <h4>Wszystkie badania</h4>
+            <table class="table table-striped table-light">
+                <tr data-th-each="b : ${badania}">
+                    <td data-th-text="${b.typ}">...</td>
+                    <td data-th-text="${b.opis}">...</td>
+                    <td data-th-text="${b.pesel}">...</td>
+                    <td data-th-text="${b.data_badania}">...</td>
+                    <td data-th-text="${b.lekarz}">...</td>
+                    <td data-th-text="${b.godnosc}">...</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<footer class=" bg-dark border-top footer text-white text-center">
+    <div class="container">
+        &copy; 2021 - Przychodnia - project by Sebastian Powęska & Szymon Piersiak & Ireneusz Przybyło
+    </div>
+</footer>
+</body>
+</html>
