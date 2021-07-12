@@ -1,29 +1,49 @@
 package pl.wsiz.iid6.patient.dto;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
-import java.util.List;
 
+@Entity(name = "recepta")
 public class Recepta
 {
-    private String peselPacjenta;
-    private Date dataWaznosci;
-    private List<Lek> listaLekow;
+    @Id
+    @GeneratedValue
+    private String pesel;
+    private Date data_Waznosci;
+    private String Lekarz;
+    private Date data_wystawienia;
 
-    public Recepta(String peselPacjenta, Date dataWaznosci, List<Lek> listaLekow)
-    {
-        this.peselPacjenta = peselPacjenta;
-        this.dataWaznosci = dataWaznosci;
-        this.listaLekow = listaLekow;
+    public String getPesel() {
+        return pesel;
     }
 
-    public List<Lek> getListaLekow() {
-        return listaLekow;
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
     }
 
-    public List<Lek> obtainListaLekow(String pesel, int ID) {
-        // if dataWaznosci<dataDzisiaj
-        return listaLekow;
-        //else
-        //return null;
+    public Date getData_Waznosci() {
+        return data_Waznosci;
+    }
+
+    public void setData_Waznosci(Date data_Waznosci) {
+        this.data_Waznosci = data_Waznosci;
+    }
+
+    public String getLekarz() {
+        return Lekarz;
+    }
+
+    public void setLekarz(String lekarz) {
+        Lekarz = lekarz;
+    }
+
+    public Date getData_wystawienia() {
+        return data_wystawienia;
+    }
+
+    public void setData_wystawienia(Date data_wystawienia) {
+        this.data_wystawienia = data_wystawienia;
     }
 }
