@@ -27,24 +27,12 @@ public class MedicineController
     }
 
     @GetMapping(path = "/medicineByName")
-    @ResponseBody
-    public String getMedicineByNazwa(@RequestParam String nazwa){
-        return lekService.findMedicineByName(nazwa);
-    }
-
-    @GetMapping(path = "/medicineByProducent")
-    @ResponseBody
-    public String getMedicineByProducent(@RequestParam String producent){
-        return lekService.findMedicineByProducent(producent);
-    }
-
-    @GetMapping(path = "/medicineByNameWeb")
     public String getAllByName(final ModelMap model, @RequestParam String name) {
         List<Lek> leki = lekService.getAllMedByName(name);
         model.addAttribute("lekiByName", leki);
         return "lekiByName";
     }
-    @GetMapping(path = "/medicineByProducentWeb")
+    @GetMapping(path = "/medicineByProducent")
     public String getAllByProducent(final ModelMap model, @RequestParam String producent) {
         List<Lek> leki = lekService.getAllMedByProducent(producent);
         model.addAttribute("lekiByProducent", leki);
