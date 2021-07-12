@@ -96,16 +96,11 @@ public class PatientController
                 return "pacjent.html";
         }
 
-        @GetMapping(path="/patientsall") //wersja lepsza
+        @GetMapping(path="/patientsall")
         public String listPatients(final ModelMap model) throws Exception {
                 List<PatientEntity> allPatient = patientService.findAll();
                 model.addAttribute("patients", allPatient);
                 return  "pacjentAll.html";
         }
 
-        @GetMapping(path="/patientsall2") //wersja uboga
-        @ResponseBody
-        public String patientAll(){
-                return (patientService.findAll()).toString();
-        }
 }
