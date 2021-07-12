@@ -1,4 +1,4 @@
-package pl.wsiz.iid6.patientservice;
+package pl.wsiz.iid6.patient;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
