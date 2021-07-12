@@ -12,17 +12,17 @@ public class patientControllerJSON {
     @Autowired
     private PatientService patientService;
 
-    @GetMapping(path="name/{lname}", produces = "application/json")
+    @GetMapping(path="name/{lname}")
     public String patientName(@PathVariable String lname){
         return (patientService.findByLastName(lname)).toString();
     }
 
-    @GetMapping(path="/all", produces = "application/json")
+    @GetMapping(path="/all")
     public String patientAll(){
         return (patientService.findAll()).toString();
     }
 
-    @GetMapping(path="pesel/{pesel}", produces = "application/json")
+    @GetMapping(path="pesel/{pesel}")
     public String patientPesel(@PathVariable String pesel){
         return (patientService.findByPesel(pesel)).toString();
     }
