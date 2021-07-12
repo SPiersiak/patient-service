@@ -9,126 +9,85 @@ public class Osoba
     private String miejscowosc;
     private String kod;
     private String ulica;
-    private String pesel;
-    private String dataUrodzenia;
-    private String mail;
     private String nrTelefonu;
-    private String plec;
+    private String pesel;
+    private String imieOjca;
+    private String imieMatki;
+    private Date dataUrodzenia;
 
-    public Osoba(String imie, String nazwisko, String miejscowosc, String kod, String ulica, String pesel, String dataUrodzenia, String mail, String nrTelefonu, String plec)
-    {
+    public Osoba(String imie, String nazwisko, String miejscowosc, String nrTelefonu, String pesel) {
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.miejscowosc = miejscowosc;
-        this.kod = kod;
-        this.ulica = ulica;
-        this.pesel = pesel;
-        this.dataUrodzenia = dataUrodzenia;
-        this.mail = mail;
         this.nrTelefonu = nrTelefonu;
-        this.plec = plec;
+        this.pesel = pesel;
     }
 
-    public Osoba() {
+    public int getWiek(){
+        // br - rok urodzenia
+        int wiek = 20;
+        return wiek;
+    }
+
+    public boolean checkPesel(){
+        // 990512 .... 12.05.2021
+        // długość pesel
+        return true;
+    }
+
+    public Osoba(String imie, String nazwisko, String pesel, String miejscowosc) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.pesel = pesel;
+        this.miejscowosc = miejscowosc;
+    }
+
+    public Osoba(String imie, String nazwisko) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+    }
+
+    public Osoba(String pesel) {
+        this.pesel = pesel;
     }
 
     public String getImie() {
         return imie;
     }
 
-    public void setImie(String imie) {
-        this.imie = imie;
-    }
-
     public String getNazwisko() {
         return nazwisko;
-    }
-
-    public void setNazwisko(String nazwisko) {
-        this.nazwisko = nazwisko;
     }
 
     public String getMiejscowosc() {
         return miejscowosc;
     }
 
-    public void setMiejscowosc(String miejscowosc) {
-        this.miejscowosc = miejscowosc;
-    }
-
     public String getKod() {
         return kod;
-    }
-
-    public void setKod(String kod) {
-        this.kod = kod;
     }
 
     public String getUlica() {
         return ulica;
     }
 
-    public void setUlica(String ulica) {
-        this.ulica = ulica;
+    public String getNrTelefonu() {
+        return nrTelefonu;
     }
 
     public String getPesel() {
         return pesel;
     }
 
-    public void setPesel(String pesel) {
-        this.pesel = pesel;
+    public String getImieOjca() {
+        return imieOjca;
     }
 
-    public String getDataUrodzenia() {
+    public String getImieMatki() {
+        return imieMatki;
+    }
+
+    public Date getDataUrodzenia() {
         return dataUrodzenia;
-    }
-
-    public void setDataUrodzenia(String dataUrodzenia) {
-        this.dataUrodzenia = dataUrodzenia;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getNrTelefonu() {
-        return nrTelefonu;
-    }
-
-    public void setNrTelefonu(String nrTelefonu) {
-        this.nrTelefonu = nrTelefonu;
-    }
-
-    public String getPlec() {
-        return plec;
-    }
-
-    public void setPlec(String plec) {
-        this.plec = plec;
-    }
-
-    public int getWiek()
-    {
-        // wyznczamy wiek Rok obecny - rok urodzenia
-        int wiek = 20;
-        return wiek;
-    }
-
-    public boolean checkEmail()
-    {
-        // czy poprwany, czy zawiera @
-        return true;
-    }
-
-    public boolean checkPesel()
-    {
-        // 12.05.01 -> 01 05 31.....
-        //             01 05+20 31
-        return true;
     }
 }

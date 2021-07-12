@@ -7,9 +7,10 @@ import pl.wsiz.iid6.patient.entity.PatientEntity;
 
 public interface PatientRepository extends CrudRepository<PatientEntity, Long>
 {
-    List<PatientEntity> findAllByNazwisko(String nazwisko);
+    List<PatientEntity> findAllByLastName(String lastName);
+    List<PatientEntity> findAllByFirstName(String firstName);
+    List<PatientEntity> findByPesel(String pesel);
     List<PatientEntity> findAll();
-    List<PatientEntity> findAllByImie(String imie);
 
 
 

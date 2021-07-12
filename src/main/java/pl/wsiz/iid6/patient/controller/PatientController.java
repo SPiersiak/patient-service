@@ -24,102 +24,88 @@ public class PatientController
         @Autowired
         private PatientService patientService;
 
-        @GetMapping(path="/id")
-        public String patientId(final ModelMap model, @RequestParam Long idP)
-        {
-                Pacjent patient = patientService.findbyID(idP);
-                model.addAttribute("imie",patient.getImie());
-                model.addAttribute("nazwisko",patient.getNazwisko());
-                model.addAttribute("miejscowosc",patient.getMiejscowosc());
-                model.addAttribute("kod",patient.getKod());
-                model.addAttribute("ulica",patient.getUlica());
-                model.addAttribute("pesel",patient.getPesel());
-                model.addAttribute("dataUrodzenia",patient.getDataUrodzenia());
-                model.addAttribute("mail",patient.getMail());
-                model.addAttribute("telefon",patient.getNrTelefonu());
-                model.addAttribute("plec",patient.getPlec());
-                return "pacjentId.html";
-
-
-
-        }
-/*
-        @GetMapping(path="/age")
-        public String age(final ModelMap model, @RequestParam int wiek)
-        {
-                List<PatientEntity> allPatients = patientService.findAll();
-
-                Date dzisiaj = new Date();
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(dzisiaj);
-                int r1 = calendar.get(Calendar.YEAR);
-                for (PatientEntity p : allPatients)
-                {
-                       // long rok = dzisiaj.getTime() - p.getDataUrodzenia().getTime();
-                        Calendar calendar1 = Calendar.getInstance();
-                        calendar1.setTime(p.getDataUrodzenia());
-                        int r2 = calendar1.get(Calendar.YEAR);
-                        if ( !(r1-r2 == wiek))
-                        {
-                               allPatients.remove(p);
-                        }
-
-
-
-                }
-                model.addAttribute("patientsByWiek",allPatients);
-                return "pacjentWiek.html";
-
-        }
-*/
-
-        @GetMapping(path="/imie")
-        public String patientName(final ModelMap model, @RequestParam String imie)
-        {
-                List<PatientEntity> patientByImie = patientService.findAllByImie(imie);
-                model.addAttribute("patientsByImie",patientByImie);
-                return "pacjentByImie.html";
+        @GetMapping(path="/indexOld")
+        @ResponseBody
+        public String index() {
+                return "Witamy";
         }
 
-        @GetMapping(path="/all")
-        public String patientAll(final ModelMap model)
-        {
+        @GetMapping(path="/index")
+        public String indexWeb() {
+                return "index.html";
+        }
+
+        @GetMapping(path="/age") //?yearNow=2021&yearBirth=1998
+        @ResponseBody
+        public String age(@RequestParam(required = true) int yearNow, @RequestParam int yearBirth) {
+                return Integer.toString(yearNow-yearBirth);
+        }
+
+        @GetMapping(path="/id") // po idP
+        @ResponseBody
+        public String patientId(@RequestParam Long idP){
+                return (patientService.findbyId(idP)).toString();
+        }
+
+        @GetMapping(path="/lastname") //po lname
+        @ResponseBody
+        public String patientName(@RequestParam String lname){
+                return (patientService.findByLastName(lname)).toString();
+        }
+
+        @GetMapping(path="/firstname") //po fname
+        @ResponseBody
+        public String patientFirstName(@RequestParam String name){
+                return (patientService.findByFirstName(name)).toString();
+        }
+
+        @GetMapping(path="/pesel") //po pesel
+        @ResponseBody
+        public String patientPesel(@RequestParam String pesel){
+                return (patientService.findByPesel(pesel)).toString();
+        }
+
+        @GetMapping(path="/namesWeb") //po name - też nazwisko
+        public String patientNameWeb (final ModelMap model, @RequestParam String name){
+                List<PatientEntity> patientByName = patientService.findByLastName(name);
+                model.addAttribute("patientsByName", patientByName);
+                return "pacjentByName.html";
+        }
+
+        @GetMapping(path="/peselWeb") //po pesel
+        public String patientPeselWeb (final ModelMap model, @RequestParam String pesel){
+                List<PatientEntity> patientByPesel = patientService.findByPesel(pesel);
+                model.addAttribute("patientsByPesel", patientByPesel);
+                return "pacjentByPesel.html";
+        }
+
+        @GetMapping(path="/firstnamesWeb") //po fname
+        public String patientFNameWeb (final ModelMap model, @RequestParam String fname){
+                List<PatientEntity> patientByFirstName = patientService.findByFirstName(fname);
+                model.addAttribute("patientsByFirstName", patientByFirstName);
+                return "pacjentByFirstName.html";
+        }
+
+        @RequestMapping(value = "/pacjent") //po idP
+        public String index(final ModelMap model, Long idP) {
+                model.addAttribute("nr", idP);
+                Pacjent patient = patientService.findbyId(idP);
+                model.addAttribute("imie", patient.getImie());
+                model.addAttribute("nazwisko", (patient.getNazwisko()));
+                model.addAttribute("pesel", (patient.getPesel()));
+                return "pacjent.html";
+        }
+
+        @GetMapping(path="/patientsall") //wersja lepsza
+        public String listPatients(final ModelMap model) throws Exception {
                 List<PatientEntity> allPatient = patientService.findAll();
-                model.addAttribute("patients",allPatient);
-                return "pacjentAll.html";
+                model.addAttribute("patients", allPatient);
+                return  "pacjentAll.html";
         }
 
-        @GetMapping(path="/nazwisko")
-        public String patientNazwisko(final ModelMap model, @RequestParam String nazwisko)
-        {
-                List<PatientEntity> patientByNazwisko = patientService.findAllByNazwisko(nazwisko);
-                model.addAttribute("patientsByNazwisko",patientByNazwisko);
-                return "pacjentByNazwisko.html";
+        @GetMapping(path="/patientsall2") //wersja uboga
+        @ResponseBody
+        public String patientAll(){
+                return (patientService.findAll()).toString();
         }
-
-        @RequestMapping(value="/form", method = RequestMethod.GET)
-        public ModelAndView showForm(){
-                return new ModelAndView("formularz","pacjent", new Pacjent());
-        }
-
-        @RequestMapping(value="/addPacjent",method = RequestMethod.POST)
-        public String submit(@Validated @ModelAttribute("pacjent")Pacjent patient, BindingResult result, ModelMap model){
-                if (result.hasErrors()){
-                        return "error";
-                }
-                model.addAttribute("imie",patient.getImie());
-                model.addAttribute("nazwisko",patient.getNazwisko());
-                model.addAttribute("miejscowosc",patient.getMiejscowosc());
-                model.addAttribute("kod",patient.getKod());
-                model.addAttribute("ulica",patient.getUlica());
-                model.addAttribute("pesel",patient.getPesel());
-                model.addAttribute("dataUrodzenia",patient.getDataUrodzenia());
-                model.addAttribute("mail",patient.getMail());
-                model.addAttribute("nrTelefonu",patient.getNrTelefonu());
-                model.addAttribute("plec",patient.getPlec());
-                patientService.saveNewPacjent(patient);
-                return "formularz";
-
-        }
-
 }

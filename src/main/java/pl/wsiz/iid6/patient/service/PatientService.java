@@ -16,36 +16,32 @@ public class PatientService {
     @Autowired
     private PatientRepository patientRepository;
 
-    public Pacjent findbyID(Long id) {
+    public Pacjent findbyId (Long id) {
         Optional<PatientEntity> res = patientRepository.findById(id);
         if (res.isPresent()) {
             PatientEntity pat = res.get();
-            return new Pacjent(pat.getImie(), pat.getNazwisko(), pat.getMiejscowosc(), pat.getKod(), pat.getUlica(), pat.getPesel(), pat.getDataUrodzenia(), pat.getMail(), pat.getNrTelefonu(), pat.getPlec());
+            return new Pacjent(pat.getFirstName(), pat.getLastName(), pat.getPesel(), pat.getMiejscowosc());
         }
-        Date date = new Date();
-        return new Pacjent("None", "None", "None", "None", "None", "None", "None", "None", "None", "None");
-
+        return new Pacjent("None", "None");
     }
 
-    public List<PatientEntity> findAllByImie(String imie)
-    {
-        return patientRepository.findAllByImie(imie);
+    public List<PatientEntity> findByLastName(String name){
+        List<PatientEntity> rs = patientRepository.findAllByLastName(name);
+        return rs;
     }
 
-    public List<PatientEntity> findAll()
-    {
-        return patientRepository.findAll();
-
+    public List<PatientEntity> findByFirstName(String name){
+        List<PatientEntity> rs = patientRepository.findAllByFirstName(name);
+        return rs;
     }
 
-    public List<PatientEntity> findAllByNazwisko(String nazwisko)
-    {
-        return patientRepository.findAllByNazwisko(nazwisko);
+    public List<PatientEntity> findByPesel(String pesel){
+        List<PatientEntity> rs = patientRepository.findByPesel(pesel);
+        return rs;
     }
 
-    public void saveNewPacjent(Pacjent pat){
-        PatientEntity patientEntity = new PatientEntity(pat.getImie(), pat.getNazwisko(), pat.getMiejscowosc(), pat.getKod(), pat.getUlica(), pat.getPesel(), pat.getDataUrodzenia(), pat.getMail(), pat.getNrTelefonu(), pat.getPlec());
-        patientRepository.save(patientEntity);
+    public List<PatientEntity> findAll() {
+        List<PatientEntity> rs = patientRepository.findAll();
+        return rs;
     }
-
 }
