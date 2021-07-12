@@ -2,6 +2,7 @@ package pl.wsiz.iid6.patient.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,9 +22,10 @@ public class ReceptaController {
     public ReceptaService receptaService;
 
     @GetMapping("/all")
-    @ResponseBody
-    public List<Recepta> getRecepta(){
-        return receptaService.findAll();
+    public String getRecepta(final ModelMap model){
+        List<Recepta> recepty = receptaService.findAll();
+        model.addAttribute("receptaAll", recepty);
+        return "receptaAll";
     }
 
     @GetMapping("/getByPesel")
