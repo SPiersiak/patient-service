@@ -18,6 +18,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/medicine/allMedicine**").hasRole("ADMIN")
+                .antMatchers("/badanie/all**").hasRole("ADMIN")
+                .antMatchers("/patient/patientsall**").hasRole("ADMIN")
+                .antMatchers("/recepta/all**").hasRole("ADMIN")
+                .antMatchers("/skierowanie/all**").hasRole("ADMIN")
+                .antMatchers("/medicine/**").hasRole("USER")
+                .antMatchers("/badanie/**").hasRole("USER")
+                .antMatchers("/patient/**").hasRole("USER")
+                .antMatchers("/recepta/**").hasRole("USER")
+                .antMatchers("/skierowanie/**").hasRole("USER")
+                .antMatchers("/api/**").hasRole("USER")
+
                 .anyRequest().permitAll()
                 .and()
                 .formLogin().permitAll();
