@@ -21,11 +21,11 @@ public class BadanieRESTController {
         return badanieService.findAll();
     }
 
-    @GetMapping(path="pesel/{pesel}")
+    @GetMapping(path="/pesel/{pesel}")
     public List<Badanie> badanieByPesel (@PathVariable String pesel){
         return badanieService.findByPesel(pesel); }
 
-    @GetMapping(path="typ/{typ}")
+    @GetMapping(path="/typ/{typ}")
     public List<Badanie> badanieByTyp(@PathVariable String typ){
         return badanieService.findByTyp(typ);
     }

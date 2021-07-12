@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS patient;
 DROP TABLE IF EXISTS lek;
 DROP TABLE IF EXISTS skierowanie;
 DROP TABLE IF EXISTS recepta;
+DROP TABLE IF EXISTS badanie;
 
 CREATE TABLE IF NOT EXISTS skierowanie (
   ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -10,8 +11,8 @@ CREATE TABLE IF NOT EXISTS skierowanie (
   OPIS VARCHAR(250) NOT NULL
 );
 INSERT INTO skierowanie (LEKARZ, DATA_WYSTAWIENIA, OPIS) VALUES
-('Jan Kowalski', (CAST(N'2021-07-01' AS Date)), 'cos tam'),
-('Adam Nowak', (CAST(N'2021-07-01' AS Date)), 'cos tam');
+('Jan Kowalski', (CAST(N'2021-09-01' AS Date)), 'skierowanie na badanie kontrolne'),
+('Janina Kowalska', (CAST(N'2021-10-01' AS Date)), 'skierowanie na badanie ortopedyczne');
 
 
 CREATE TABLE IF NOT EXISTS patient (
@@ -23,10 +24,10 @@ CREATE TABLE IF NOT EXISTS patient (
 );
 
 INSERT INTO patient (FIRST_NAME, LAST_NAME, PESEL, MIEJSCOWOSC) VALUES
-  ('Ala', 'Makota', '11111111111', 'Krakuf'),
-  ('Ela', 'Makota', '44444444444', 'Warszafa'),
-  ('Ola', 'Dom', '22222222222', 'Rzeszuf'),
-  ('Jan', 'Kowalski', '33333333333', 'Wrocłaf');
+  ('Stefan', 'Kołkowski', '123132213321', 'Inowrocław'),
+  ('Andrzej', 'Ireneuszowski', '2131321313213', 'Wrocław'),
+  ('Mariola', 'Szymonowski', '321321321321', 'Rzeszów'),
+  ('Gerwazy', 'Marcinkowski', '3213213123', 'Kraków');
 
 CREATE TABLE IF NOT EXISTS lek (
   ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -36,10 +37,10 @@ CREATE TABLE IF NOT EXISTS lek (
 );
 
 INSERT INTO lek (NAZWA, PRODUCENT, CENA) VALUES
-('Ibum', 'HASCO-LEK', 10),
-('Tran', 'Domowa Apteczka', 33),
-('Witamina C', 'Aura Herbals', 8),
-('Ashwagandha', 'Swanson', 24);
+('Ibum', 'DOZ', 15),
+('Tran', 'Millers', 20),
+('Witamina C', 'Prawoskrętna i napromieniowana', 32),
+('Ashwagandha', 'Ashwagandha to nawet nie jest lek :/', 45);
 
 CREATE TABLE IF NOT EXISTS recepta (
   ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -50,9 +51,23 @@ CREATE TABLE IF NOT EXISTS recepta (
 );
 
 INSERT INTO recepta (PESEL, DATA_WAZNOSCI, LEKARZ, DATA_WYSTAWIENIA) VALUES
-('12345678901', (CAST(N'2021-07-25' AS Date)), 'Jan Kowalski', (CAST(N'2021-07-04' AS Date))),
-('09876543221', (CAST(N'2021-07-29' AS Date)), 'Adam Nowak', (CAST(N'2021-07-07' AS Date))),
-('12098590455', (CAST(N'2021-07-27' AS Date)), 'Marcin Pies', (CAST(N'2021-07-06' AS Date))),
-('54645646422', (CAST(N'2021-07-30' AS Date)), 'Krzysztof Nowacki', (CAST(N'2021-07-08' AS Date))),
-('98112400343', (CAST(N'2021-07-12' AS Date)), 'Karol Dec', (CAST(N'2021-06-20' AS Date)));
+('32131232131', (CAST(N'2021-06-20' AS Date)), 'Waldemar Kiepski', (CAST(N'2021-07-20' AS Date))),
+('32131232132', (CAST(N'2021-05-19' AS Date)), 'Tony Stark', (CAST(N'2021-06-19' AS Date))),
+('32131232134', (CAST(N'2021-04-17' AS Date)), 'Neo z Matrixa', (CAST(N'2021-05-17' AS Date))),
+('32131232135', (CAST(N'2021-02-01' AS Date)), 'Doktor Żiwago', (CAST(N'2021-03-01' AS Date))),
+('32131232137', (CAST(N'2021-07-10' AS Date)), 'Doktor Lubicz', (CAST(N'2021-08-10' AS Date)));
 
+CREATE TABLE IF NOT EXISTS badanie (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    TYP VARCHAR(250) NOT NULL,
+    OPIS VARCHAR(250) NOT NULL,
+    PESEL VARCHAR(250) NOT NULL,
+    DATA_BADANIA TIMESTAMP,
+    LEKARZ VARCHAR(250)NOT NULL,
+    GODNOSC VARCHAR(250)NOT NULL
+    );
+
+INSERT INTO badanie (TYP, OPIS, PESEL, DATA_BADANIA, LEKARZ, GODNOSC) VALUES
+('Kolonoskopia', 'badanko takie dziwne', '11111111111', (CAST(N'2021-07-25' AS Date)),'Doktur Lubicz','Waldemar Kiepski'),
+('Gastroskopia', 'ciut mniej dziwne badanko', '44444444444', (CAST(N'2021-07-25' AS Date)),'Doktor Strencz','Godność utracona'),
+('Badanie_kontrolne', 'zwykle badanko u pana doktura', '22222222222', (CAST(N'2021-07-25' AS Date)),'Doktur Hałs','Jarosław Psikuta');

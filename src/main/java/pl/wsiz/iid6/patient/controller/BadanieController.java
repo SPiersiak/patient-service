@@ -34,7 +34,7 @@ public class BadanieController {
     @GetMapping("/typ")
     @ResponseBody
     public List<Badanie> getbadanieByTyp(@RequestParam String typ){
-        return badanieService.findByPesel(typ);
+        return badanieService.findByTyp(typ);
     }
 
 }

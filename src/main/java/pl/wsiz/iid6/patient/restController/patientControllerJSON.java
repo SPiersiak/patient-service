@@ -4,7 +4,7 @@ package pl.wsiz.iid6.patient.restController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.wsiz.iid6.patient.service.PatientService;
-
+/*
 @RestController
 @RequestMapping(value="/api/patient")
 public class patientControllerJSON {
@@ -26,3 +26,4 @@ public class patientControllerJSON {
         return (patientService.findByPesel(pesel)).toString();
     }
 }
+*/

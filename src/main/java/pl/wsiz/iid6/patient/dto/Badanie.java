@@ -11,10 +11,10 @@ public class Badanie
     @Id
     @GeneratedValue
     private Long id;
-    private String typBadania;
+    private String typ;
     private String opis;
     private String pesel;
-    private Date date;
+    private Date data_badania;
     private String lekarz;
     private String godnosc;
 
@@ -26,12 +26,12 @@ public class Badanie
         this.id = id;
     }
 
-    public String getTypBadania() {
-        return typBadania;
+    public String getTyp() {
+        return typ;
     }
 
-    public void setTypBadania(String typBadania) {
-        this.typBadania = typBadania;
+    public void setTyp(String typ) {
+        this.typ = typ;
     }
 
     public String getOpis() {
@@ -50,12 +50,12 @@ public class Badanie
         this.pesel = pesel;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getData_badania() {
+        return data_badania;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setData_badania(Date data_badania) {
+        this.data_badania = data_badania;
     }
 
     public String getLekarz() {
