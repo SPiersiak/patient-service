@@ -48,8 +48,6 @@
 			<version>2.2.3</version>
 		</dependency>
 
-
-
 	</dependencies>
 
 	<build>

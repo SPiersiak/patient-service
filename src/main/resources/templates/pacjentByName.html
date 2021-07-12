@@ -9,7 +9,7 @@
 <body>
 <h4>Wszyscy pacjenci</h4>
 <table>
-    <tr data-th-each="p : ${patients}">
+    <tr data-th-each="p : ${patientsByName}">
         <td data-th-text="${p.firstName}">...</td>
         <td data-th-text="${p.lastName}">...</td>
         <td data-th-text="${p.pesel}">...</td>
