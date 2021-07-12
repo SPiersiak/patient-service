@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!--link href = "/css/styles.css" rel = "stylesheet"/-->
+    <title>Agent</title>
+</head>
+<body>
+    <h3>Wprowadź dane nowego pacjenta</h3>
+    <form action="#" th:action="@{/patient/addPacjent}" th:object="${pacjent}" method="post">
+        <p>Imie: <input type="text" th:field="*{imie}" /></p>
+        <p>Nazwisko: <input type="text" th:field="*{nazwisko}" /></p>
+        <p>Miejscowosc: <input type="text" th:field="*{miejscowosc}" /></p>
+        <p>Kod: <input type="text" th:field="*{kod}" /></p>
+        <p>Ulica: <input type="text" th:field="*{ulica}" /></p>
+        <p>Pesel: <input type="text" th:field="*{pesel}" /></p>
+        <p>Data urodzenia: <input type="text" th:field="*{dataUrodzenia}" /></p>
+        <p>Mail: <input type="text" th:field="*{mail}" /></p>
+        <p>Telefon: <input type="text" th:field="*{nrTelefonu}" /></p>
+        <p>Plec: <input type="text" th:field="*{plec}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>
